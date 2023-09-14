@@ -1,0 +1,45 @@
+from decouple import config
+
+# Select mode
+MODE = "DEVELOPMENT"
+
+# Close all open positions and orders
+ABORT_ALL_POSITIONS = False
+
+# Find cointegrated pairs
+FIND_COINTEGRATED = True
+
+# Place trades
+PLACE_TRADES = True
+
+# Timeframe
+TIMEFRAME = "1HOUR"
+
+# Stats window
+WINDOW = 21
+
+# Thresholds - Opening
+MAX_HALF_LIFE = 24
+ZSCORE_THRESHOLD = 1.5
+USD_PER_TRADE = 50
+USD_MIN_COLLATERAL = 500
+
+# Thresholds - Closing
+CLOSE_AT_ZSCORE_CROSS = True
+
+# KEYS - PRODUCTION
+BINANCE_API_KEY = config("BINANCE_API_KEY")
+BINANCE_API_SECRET = config("BINANCE_API_SECRET")
+
+# KEYS - DEVELOPMENT
+BINANCE_API_KEY_TESTNET = config("BINANCE_API_KEY_TESTNET")
+BINANCE_API_SECRET_TESTNET = config("BINANCE_API_SECRET_TESTNET")
+
+
+# KEYS - Export
+BINANCE_API = BINANCE_API_KEY if MODE == "PRODUCTION" else BINANCE_API_KEY_TESTNET
+BINANCE_APIS = BINANCE_API_SECRET if MODE == "PRODUCTION" else BINANCE_API_SECRET_TESTNET
+
+
+
+
